@@ -1,6 +1,7 @@
 # collaborative-editor
 [cl.dedd.ca](cl.dedd.ca)
-<br>multiple rooms collaborative editor with nodejs, express and socketio.
+<br>multiple rooms collaborative editor with nodejs, express and socketio. The code editor is from CodeMirror(https://codemirror.net).
+<br><br>user can create rooms and edit a file with friends by sharing the room url. Current setting for codemirror is in the very basic md view, but they support [lots more amazing features](https://codemirror.net), like themes and sublime-liked.
 <br><br>example: [http://cl.dedd.ca/qyTcN](http://cl.dedd.ca/qyTcN)
 
 ## note
