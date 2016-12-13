@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title collab edit - cl.dedd.ca
+    link(rel='stylesheet', href='http://codemirror.net/lib/codemirror.css')
+    // <link rel="stylesheet" href="http://codemirror.net/theme/ambiance.css">
+    link(rel='stylesheet', href='http://codemirror.net/theme/ambiance.css')
+    script(src='http://codemirror.net/lib/codemirror.js')
+    script(src='http://codemirror.net/addon/mode/overlay.js')
+    script(src='http://codemirror.net/mode/xml/xml.js')
+    script(src='http://codemirror.net/mode/markdown/markdown.js')
+    script(src='http://codemirror.net/mode/gfm/gfm.js')
+    script(src='http://codemirror.net/addon/scroll/simplescrollbars.js')
+    // Code block highlighting modes
+    script(src='http://codemirror.net/mode/javascript/javascript.js')
+    script(src='http://codemirror.net/mode/css/css.js')
+    script(src='http://codemirror.net/mode/htmlmixed/htmlmixed.js')
+    script(src='http://codemirror.net/mode/clike/clike.js')
+    script(src='http://codemirror.net/mode/clojure/clojure.js')
+    script(src='http://codemirror.net/mode/ruby/ruby.js')
+
+    link(rel='stylesheet', href='/stylesheets/main.css')
+  body
+    #header
+      .title Room - #{displayname}
+      .info Develop: Data may not be preserved, save your documents.
+      .siteinfo
+        a(href='http://cl.dedd.ca') cl.dedd.ca
+    .editor
+      textarea#textit
+    script.
+      var editor = CodeMirror.fromTextArea(document.getElementById("textit"), {
+      mode: 'markdown',
+      lineNumbers: true,
+      theme: "ambiance"
+      });
+    script(src='https://cdn.socket.io/socket.io-1.4.5.js')
+    script.
+      var socket = io.connect();
+      //var roomid = prompt("enter room id");
+      var roomid = #{roomname};
+      socket.on('connect', function(){
+      socket.emit('joinroom', roomid);
+      });
+      socket.on('refresh', function (data) {
+      editor.setValue(data.body);
+      });
+      socket.on('change', function (data) {
+      //console.log(data);
+      editor.replaceRange(data.text, data.from, data.to);
+      });
+      editor.on('change', function (i, op) {
+      //console.log(op);
+      socket.emit('change', op);
+      socket.emit('refresh', roomid, editor.getValue());
+      });

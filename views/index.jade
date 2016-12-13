@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= message
+  h3= error.status
+  br
+  pre #{error.stack}
+  p #{description}
+  a(href='http://cl.dedd.ca/getroom') Start a new document

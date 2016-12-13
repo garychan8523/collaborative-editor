@@ -1,0 +1,67 @@
+body
+{
+	background: #000;
+	margin: 0;
+  padding: 0;
+  max-width:inherit;
+  height: calc(100% - 60px);
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a
+{
+	color: cadetblue;
+	text-decoration: none;
+}
+a:hover {
+	color: darkcyan;
+}
+a:visited { 
+	color: cadetblue;
+}
+a:visited:hover {
+	color: darkcyan;
+}
+#header
+{
+	position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  color: #fff;
+  background: #000;
+  z-index: 50;
+}
+#header .title
+{
+  padding-top: 18px;
+  padding-left: 20px;
+  font-size: 20px;
+  color: #eee;
+}
+#header .info
+{
+  font: 12px "Arial";
+  color: #f00;
+  text-align: center;
+  vertical-align: middle;
+  opacity: 0.5;
+}
+.editor
+{
+	margin-top: 60px;
+  height: 100%;
+}
+.siteinfo
+{
+	position: absolute;
+	top: 21px;
+  right: 0;
+  padding-right: 25px;
+	color: #fff;
+  z-index: 50;
+}
+html, form, .CodeMirror, .CodeMirror-scroll
+{
+  height: 100%;        
+}
