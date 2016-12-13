@@ -23,7 +23,7 @@ html
     link(rel='stylesheet', href='/stylesheets/main.css')
   body
     #header
-      #title.title Room - 
+      #title.title Room -
       .info Develop: Data may not be preserved, save your documents.
       .siteinfo
         a(href='http://cl.dedd.ca') cl.dedd.ca
@@ -43,7 +43,7 @@ html
       });
       socket.on('updateroomname', function (data) {
       document.getElementById("title").innerHTML = "Room - " + data.roomname;
-      redirectto = 'http://cl.dedd.ca/' + data.roomname;
+      redirectto = '/' + data.roomname;
       window.location = redirectto;
       });
       socket.on('refresh', function (data) {

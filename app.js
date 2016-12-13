@@ -86,7 +86,7 @@ io.sockets.on('connection', function (socket) {
 
     message = "you are in room '" + roomid + "' now";
     message += '\n\nstart editing with your friends by this url';
-    message += '\ncl.dedd.ca/' + roomid;
+    message += '\n' + socket.handshake.headers.host + '/' + roomid;
     content[rooms.indexOf(roomid)] = message;
 
     socket.emit('updateroomname', {roomname: roomid});
@@ -105,7 +105,7 @@ io.sockets.on('connection', function (socket) {
     		rooms.push(roomid);
     		message = "you are in room '" + roomid + "' now";
     		message += '\n\nstart editing with your friends by this url';
-    		message += '\ncl.dedd.ca/' + roomid;
+    		message += '\n' + socket.handshake.headers.host + '/' + roomid;
     		//message += '\nroom index ' + rooms.indexOf(roomid);
     		content[rooms.indexOf(roomid)] = message;
     		//console.log('roomid: ' + roomid + ' emitting to content[' + rooms.indexOf(roomid) + ']');
@@ -151,7 +151,7 @@ io.sockets.on('connection', function (socket) {
 		content[rooms.indexOf(roomid)] = body_;
 		//body = body_;
 	});
-  
+
 	socket.on('change', function (op) {
 		//console.log(op);
 		if (op.origin == '+input' || op.origin == 'paste' || op.origin == '+delete') {

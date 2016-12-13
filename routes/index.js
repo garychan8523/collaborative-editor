@@ -6,7 +6,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res) {
   message = 'Welcome to Collaborative Editor';
-      statusCode = '@ cl.dedd.ca';
+      statusCode = '200';
       description = 'Ignite your idea - ';
       res.render('index', { message: message, "error": {"status": statusCode}, "description": description});
 });
