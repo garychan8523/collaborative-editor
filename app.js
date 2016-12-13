@@ -74,7 +74,7 @@ io.sockets.on('connection', function (socket) {
 	socket.on('getroom', function (){
 		do{
 		var ranroom = "";
-    	var possible = "ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789";
+    	var possible = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789";
     	for( var i=0; i < 5; i++ ){
         	ranroom += possible.charAt(Math.floor(Math.random() * possible.length));}
     }while(rooms.indexOf(ranroom)>=0);
